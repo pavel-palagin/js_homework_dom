@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="content"></div>
+
+    <script src="data.js"></script>
+    <script>
+      const data = JSON.parse(datainfo);
+      data.forEach((element) => {
+        console.log(element.results);
+      });
+
+      const contentEl = document.querySelector(".content");
+      let titleEl, discEl, emailEl, pictureEl, phoneEl, divEl;
+
+      contentEl.style.border = "1px solid black";
+      contentEl.style.width = "360px";
+      contentEl.style.display = "flex";
+      contentEl.style.justifyContent = "space-around";
+      contentEl.style.alignItems = "center";
+      contentEl.style.boxShadow = "0 0 10px gray";
+
+      data.forEach((element) => {
+        discEl = document.createElement("div");
+        titleEl = document.createElement("h2");
+        titleEl.classList.add("title");
+        titleEl.textContent = `${element.results[0].name.first} ${element.results[0].name.last}`;
+        titleEl.style.color = "orangered";
+        contentEl.appendChild(discEl);
+        discEl.appendChild(titleEl);
+
+        phoneEl = document.createElement("p");
+        phoneEl.classList.add("phone");
+        phoneEl.textContent = `tel: ${element.results[0].phone}`;
+        phoneEl.style.color = "orangered";
+        contentEl.appendChild(discEl);
+        discEl.appendChild(phoneEl);
+
+        emailEl = document.createElement("p");
+        emailEl.classList.add("email");
+        emailEl.textContent = `email: ${element.results[0].email}`;
+        emailEl.style.color = "orangered";
+        contentEl.appendChild(discEl);
+        discEl.appendChild(emailEl);
+
+        divEl = document.createElement("div");
+        pictureEl = document.createElement("img");
+        pictureEl.classList.add("image");
+        pictureEl.src = element.results[0].picture.medium;
+        contentEl.appendChild(divEl);
+        divEl.appendChild(pictureEl);
+      });
+    </script>
+  </body>
+</html>
