@@ -16,7 +16,6 @@
       });
 
       const contentEl = document.querySelector(".content");
-      let titleEl, discEl, emailEl, pictureEl, phoneEl, divEl;
 
       contentEl.style.border = "1px solid black";
       contentEl.style.width = "360px";
@@ -26,6 +25,7 @@
       contentEl.style.boxShadow = "0 0 10px gray";
 
       data.forEach((element) => {
+        let discEl, titleEl, emailEl, phoneEl, divEl, pictureEl;
         discEl = document.createElement("div");
         titleEl = document.createElement("h2");
         titleEl.classList.add("title");
